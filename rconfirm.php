@@ -25,24 +25,23 @@
         combinationUtil($arr, $n, $r, $index + 1, $data, $i + 1);
         combinationUtil($arr, $n, $r, $index, $data, $i + 1);
     }
-$frombonus;
-/** Start Constant Values **/
-include('include/connector.php');
-
-$sqidl = "SELECT * FROM `xxoxx`";
-$result = $conn->query($sqidl);
-$row = $result->fetch_assoc();
-	
-$url = $row["devurl"];
-$username = $row["l_username"];
-$password = $row["l_password"];
-$terminalid = $row["l_terminalid"];
-$operaterID = $row["l_operaterId"]; 
-$phoneNumber = $row["l_phonenumber"];
-
-$newbonusbalance;
-$newbalance;
-$wagerid;
+		/** Start Constant Values **/
+		include('include/connector.php');
+		$frombonus;
+		$sqidl = "SELECT * FROM `xxoxx`";
+		$result = $conn->query($sqidl);
+		$row = $result->fetch_assoc();
+			
+		$url = $row["devurl"];
+		$username = $row["l_username"];
+		$password = $row["l_password"];
+		$terminalid = $row["l_terminalid"];
+		$operaterID = $row["l_operaterId"]; 
+		$phoneNumber = $row["l_phonenumber"];
+		
+		$newbonusbalance;
+		$newbalance;
+		$wagerid;
 
 
 		$userid = $_POST["userid"]; // User ID
@@ -61,35 +60,22 @@ $wagerid;
 		$resultb = $conn->query($sqidlb);
 		$rowb = $resultb->fetch_assoc();
 		
-		
-		
-		//Get Winning Balance
-		//$sqidww = "SELECT * FROM w__wallets WHERE user_id = $userid";
-		//$resultww = $conn->query($sqidww);
-		//$winning_row = $resultww->fetch_assoc();
-		
-		//$winning_wallet_balance = $winning_row["fiat"];
-
-		
 		$currencyid = $_POST["currencyid"]; // Currency ID
 		$currencysymbol = $_POST["currencysymbol"]; // Currency Symbol
 		$my_game = $_POST["my_game"]; //Game Type
 		$betAmount = $_POST["total"]; // Stake Amount
 		$playType = $_POST["play_type"]; //Play Type
 		
-		$GameNameAndID = explode(";", $_POST["drawIDs"]);// Game Name & Draw ID
-		
+		// Split Draw Name & Draw ID
+		$GameNameAndID = explode(";", $_POST["drawIDs"]);
+		// DrawIDs and Game (Draw) Name
 		$drawIDs = array($GameNameAndID[0]); // Draw ID
 		$GameName = $GameNameAndID[1]; // Game Name 
 		
 		$transactionId = $_POST["transactionId"]; // Transaction ID
-		
 		$mybalance = $roww["fiat"]; // Main Balance
 		$bonus_balance = $rowb["fiat"]; //Bonus Balance
-		
 		$status = "NIL";
-
-
 /** End Constant Values **/
 
 	
